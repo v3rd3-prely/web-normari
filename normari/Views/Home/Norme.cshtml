@@ -1,0 +1,81 @@
+﻿@model IEnumerable<normari.Models.Norme>
+
+<!DOCTYPE html>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Normaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operatiesimpla)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operatiemultipla)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NrOperatii)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operatiestandard)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operatietip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postlucru)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sectie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Normaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operatiesimpla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operatiemultipla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrOperatii)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operatiestandard)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operatietip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postlucru)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sectie)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Normaid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Normaid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Normaid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

@@ -1,0 +1,127 @@
+﻿@model normari.Models.Timpi
+
+<h4>Timpi</h4>
+<hr />
+
+<div class="row">
+    <div class="col-6 d-flex justify-content-end">
+        <button class="btn btn-primary">Start</button>
+    </div>
+    <div class="col-6 d-flex justify-content-start">
+        <button class="btn btn-danger">Stop</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Timp1" class="control-label"></label>
+                <input asp-for="Timp1" class="form-control" />
+                <span asp-validation-for="Timp1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp2" class="control-label"></label>
+                <input asp-for="Timp2" class="form-control" />
+                <span asp-validation-for="Timp2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp3" class="control-label"></label>
+                <input asp-for="Timp3" class="form-control" />
+                <span asp-validation-for="Timp3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp4" class="control-label"></label>
+                <input asp-for="Timp4" class="form-control" />
+                <span asp-validation-for="Timp4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp5" class="control-label"></label>
+                <input asp-for="Timp5" class="form-control" />
+                <span asp-validation-for="Timp5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp6" class="control-label"></label>
+                <input asp-for="Timp6" class="form-control" />
+                <span asp-validation-for="Timp6" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp7" class="control-label"></label>
+                <input asp-for="Timp7" class="form-control" />
+                <span asp-validation-for="Timp7" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp8" class="control-label"></label>
+                <input asp-for="Timp8" class="form-control" />
+                <span asp-validation-for="Timp8" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp9" class="control-label"></label>
+                <input asp-for="Timp9" class="form-control" />
+                <span asp-validation-for="Timp9" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp10" class="control-label"></label>
+                <input asp-for="Timp10" class="form-control" />
+                <span asp-validation-for="Timp10" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp11" class="control-label"></label>
+                <input asp-for="Timp11" class="form-control" />
+                <span asp-validation-for="Timp11" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp12" class="control-label"></label>
+                <input asp-for="Timp12" class="form-control" />
+                <span asp-validation-for="Timp12" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp13" class="control-label"></label>
+                <input asp-for="Timp13" class="form-control" />
+                <span asp-validation-for="Timp13" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp14" class="control-label"></label>
+                <input asp-for="Timp14" class="form-control" />
+                <span asp-validation-for="Timp14" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timp15" class="control-label"></label>
+                <input asp-for="Timp15" class="form-control" />
+                <span asp-validation-for="Timp15" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timptotal" class="control-label"></label>
+                <input asp-for="Timptotal" class="form-control" />
+                <span asp-validation-for="Timptotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Starttime" class="control-label"></label>
+                <input asp-for="Starttime" class="form-control" />
+                <span asp-validation-for="Starttime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Endtime" class="control-label"></label>
+                <input asp-for="Endtime" class="form-control" />
+                <span asp-validation-for="Endtime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Normaid" class="control-label"></label>
+                <input asp-for="Normaid" class="form-control" />
+                <span asp-validation-for="Normaid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

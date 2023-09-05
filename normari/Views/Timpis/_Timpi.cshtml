@@ -1,0 +1,14 @@
+﻿@model List<normari.Models.Timpi>
+
+
+<div class="row">
+    <div class="col-6 d-flex justify-content-end">
+        <a class="btn btn-primary" asp-controller="Timpis" asp-action="Start">Start</a>
+    </div>
+    <div class="col-6 d-flex justify-content-start">
+        <a class="btn btn-danger" asp-controller="Timpis" asp-action="Stop">Stop</a>
+    </div>
+</div>
+<p>
+    <a asp-controller="Timpis" asp-action="Create">Create New</a>
+</p>

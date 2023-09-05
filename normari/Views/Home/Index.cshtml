@@ -1,0 +1,153 @@
+﻿@model Norme
+
+@{
+    ViewData["Title"] = "Normare";
+}
+@{
+
+   @* IEnumerable<Sectii> sectii = ViewData["Sectii"] as IEnumerable<Sectii>;
+    IEnumerable<Operatietip> operatietip = ViewData["Operatietip"] as IEnumerable<Operatietip>;
+    IEnumerable<Operatiestandard> operatiestandard = ViewData["Operatiestandard"] as IEnumerable<Operatiestandard>;
+    IEnumerable<Postlucru> postlucru = ViewData["Postlucru"] as IEnumerable<Postlucru>;*@
+    var sectii = new SelectList(ViewData["Sectii"] as IEnumerable<Sectii>, "Sectieid", "Sectie");
+    var operatietip = new SelectList(ViewData["Operatietip"] as IEnumerable<Operatietip>, "Operatietipid", "Operatietip1");
+    var operatiestandard = new SelectList(ViewData["Operatiestandard"] as IEnumerable<Operatiestandard>, "Operatiestadnardid", "Operatiestandard1");
+    var postlucru = new SelectList(ViewData["Postlucru"] as IEnumerable<Postlucru>, "Postid", "Postdelucru");
+}
+<div class="container">
+    <div class="row px-2 pb-2">
+        <div class="col-4 d-flex justify-content-center px-4">
+            <select class="form-select form-select-lg" asp-for="Sectie" asp-items="@sectii" onchange="">
+                <option value="">- Alege Sectie -</option>
+            </select>
+        </div>
+        <div class="col-4 d-flex justify-content-center px-4">
+            <select class="form-select form-select-lg" asp-for="Operatietip" asp-items="@operatietip">
+                <option value="">- Alege Tip Operatie -</option>
+            </select>
+        </div>
+        <div class="col-4 d-flex justify-content-center px-4">
+            <select class="form-select form-select-lg" asp-for="Postlucru" asp-items="@postlucru">
+                <option value="">- Alege Post de Lucru -</option>
+            </select>
+        </div>
+    </div>
+    <div class="row px-2 pb-2">
+        <div class="col-4 d-flex justify-content-center px-4">
+        </div>
+        <div class="col-4 d-flex justify-content-center px-4">
+            <select class="form-select form-select-lg" asp-for="Operatiestandard" asp-items="@operatiestandard">
+                <option value="">- Alege Operatie Standard -</option>
+            </select>
+        </div>
+    </div>
+    @* <div class="row px-2 pb-2">
+        <button asp-area="" asp-controller="Home" asp-action="Test">Submit</button>
+    </div> *@
+    @* <div class="row p-2">
+        <div class="col-4 d-flex justify-content-center">
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="MeniuSectie" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sectia
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (var sectie in sectii)
+                    {
+                    <a class="dropdown-item" href="#">
+                            @sectie.Sectie
+                    </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center align-items-stretch">
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="MeniuTip" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Tip Operatie
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (var optip in operatietip)
+                    {
+                        <a class="dropdown-item" href="#">
+                            @optip.Operatietip1
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+            <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="MeniuPostLucru" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Post de Lucru
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (var post in postlucru)
+                    {
+                        <a class="dropdown-item" href="#">
+                            @post.Postdelucru
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="dropdown d-flex justify-content-center">
+                <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="MeniuOperatieStandard" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Operatie Standard
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @foreach (var opstd in operatiestandard)
+                    {
+                        <a class="dropdown-item" href="#">
+                            @opstd.Operatiestandard1
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div> *@
+    <div class="row p-2" data-toggle="buttons">
+        <div class="col-6 d-flex justify-content-end">
+            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+            <label class="btn btn-success btn-lg" id="option1button" for="option1">Operatie Simpla</label>
+        </div>
+        <div class="col-6 d-flex justify-content-start">
+            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+            <label class="btn btn-secondary btn-lg" id="option2button" for="option2">Operatie Multipla</label>
+        </div>
+    </div>
+    <div class="container d-flex justify-content-center p-2 invisible" id="number_of_operations">
+        <div id="decrement">
+            <button class="btn btn-secondary mx-2" type="button" id="Decrement"  aria-expanded="false">
+                -
+            </button>
+        </div>
+        <div id="total-count" class="btn btn-dark px-4 disabled">
+        </div>
+        <div id="increment">
+            <button class="btn btn-secondary mx-2" type="button" id="Increment"  aria-expanded="false">
+                +
+            </button>
+        </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-6 d-flex justify-content-end">
+
+            <div class="dropdown">
+                <button class="btn btn-primary btn-lg" type="button" id="ToggleSingular" aria-haspopup="true" aria-expanded="false">
+                    START
+                </button>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-start">
+
+            <div class="dropdown">
+                <button class="btn btn-danger btn-lg" type="button" id="ToggleMultiplu" aria-haspopup="true" aria-expanded="false">
+                    STOP
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

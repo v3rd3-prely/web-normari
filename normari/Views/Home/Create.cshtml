@@ -1,0 +1,110 @@
+﻿@model normari.Models.Norme
+
+
+<h4>Norme</h4>
+
+<form asp-action="Create">
+    <div class="row py-2">
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+        <div class="form-group col-4 px-4 d-flex justify-content-center">
+            @* <label asp-for="Operatietip" class="control-label"></label> *@
+            <select asp-for="Operatietip" class="form-control" asp-items="ViewBag.Operatietip">
+                <option value="">- Alege Tip Operatie -</option>
+            </select>
+            <span asp-validation-for="Operatietip" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-4 px-4 d-flex justify-content-center">
+            @* <label asp-for="Sectie" class="control-label"></label> *@
+            <select asp-for="Sectie" class ="form-control" asp-items="ViewBag.Sectie">
+                <option value="">- Alege Sectie -</option>
+            </select>
+            <span asp-validation-for="Sectie" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-4 px-4 d-flex justify-content-center">
+            @* <label asp-for="Postlucru" class="control-label"></label> *@
+            <select asp-for="Postlucru" class ="form-control" asp-items="ViewBag.Postlucru">
+                <option value="">- Alege Post de Lucru -</option>
+            </select>
+            <span asp-validation-for="Postlucru" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-4 px-4 d-flex justify-content-center"></div>
+
+        <div class="form-group col-4 px-4 d-flex justify-content-center">
+            @* <label asp-for="Operatiestandard" class="control-label"></label> *@
+            <select asp-for="Operatiestandard" class ="form-control" asp-items="ViewBag.Operatiestandard">
+                <option value="">- Alege Operatie Standard -</option>
+            </select>
+            <span asp-validation-for="Operatiestandard" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-6">
+            <div class="form-check d-flex justify-content-end">
+                <input type="radio" id="simplu" class="btn-check form-check-input"  asp-for="Operatiesimpla" value="True" checked />
+                <label asp-for="Operatiesimpla" id="simplubutton" for="simplu" class="form-check-label btn btn-success btn-lg">Operatie Simpla</label>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-check d-flex justify-content-start">
+                <input type="radio" id="multiplu" class="btn-check form-check-input"  asp-for="Operatiesimpla" value="False" />
+                <label asp-for="Operatiesimpla" id="multiplubutton" for="multiplu" class="form-check-label btn btn-secondary btn-lg">Operatie Multipla</label>
+            </div>
+        </div>
+    </div>
+    @* <div class="row p-2" data-toggle="buttons">
+        <div class="col-6 d-flex justify-content-end">
+            <input type="radio" class="btn-check form-check-input" name="options" id="option1" autocomplete="off" asp-for="Operatiesimpla" value="True" checked>
+            <label asp-for="Operatiesimpla" class="btn btn-success btn-lg" id="option1button" for="option1">Operatie Simpla</label>
+        </div>
+        <div class="col-6 d-flex justify-content-start">
+            <input type="radio" class="btn-check form-check-input" name="options" id="option2" asp-for="Operatiesimpla" value="False" autocomplete="off">
+            <label asp-for="Operatiesimpla" class="btn btn-secondary btn-lg" id="option2button" for="option2">Operatie Multipla</label>
+        </div>
+    </div>
+     </div>
+            @* <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div> *@
+    <div class="container py-2 invisible" id="number_of_operations">
+        <div class="row">
+            <div class="col-5 d-flex justify-content-end">
+            </div>
+            <div class="col-2 d-flex justify-content-center w-10">
+                <div id="decrement">
+                    <button class="btn btn-secondary mx-4" type="button" id="Decrement">-</button>
+                </div>
+                <input id="total-count" asp-for="NrOperatii" class="remove-arrow" value="1" min="1" max="10" />
+                <div id="increment">
+                    <button class="btn btn-secondary mx-4" type="button" id="Increment" >+</button>
+                </div>
+            </div>
+            <div class="col-5 d-flex justify-content-start">
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+
+
+@* <div>
+    <a asp-action="Norme">Back to List</a>
+</div> *@
+
+<div id="partial"></div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $('#partial').load('Timpis/TimpiPartial')
+    </script>
+}

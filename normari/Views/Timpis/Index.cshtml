@@ -1,0 +1,137 @@
+﻿@model IEnumerable<normari.Models.Timpi>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timp15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timptotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Starttime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endtime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Normaid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp12)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp13)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp14)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timp15)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timptotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Starttime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Endtime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Normaid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Timpid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Timpid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Timpid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
