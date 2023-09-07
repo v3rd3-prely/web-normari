@@ -14,12 +14,12 @@ namespace normari.Controllers
     public class TimpisController : Controller
     {
         private readonly TestContext _context;
-        private Stopwatch _stopWatch;
+        private StopWatchModel _stopwatch;
 
         public TimpisController(TestContext context)
         {
             _context = context;
-            _stopWatch = new Stopwatch();
+            _stopwatch = new StopWatchModel();
         }
 
         // GET: Timpis
@@ -29,27 +29,84 @@ namespace normari.Controllers
                         View(await _context.Timpis.ToListAsync()) :
                         Problem("Entity set 'TestContext.Timpis'  is null.");
         }
-        public IActionResult Start()
+
+
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+
+        public IActionResult Send([FromBody] List<List<int>> json)
         {
-            _stopWatch.Restart();
-            return RedirectToAction("Create", "Home");
+            //if (!ModelState.IsValid)
+            //    return NotFound();
+            Timpi[] list = new Timpi[json[0].Count];
+            
+            for (var i = 0; i < json[0].Count; i++)
+            {
+                var total = 0;
+                var totalTimeMili = 0;
+                for(var j = 0;j < 15; j++)
+                {
+                    if (json[j][i] != null)
+                    {
+                        total++;
+                        totalTimeMili += json[j][i];
+                    }
+                }
+                var totalTime = TimeSpan.FromMilliseconds(totalTimeMili);
+                var endTime = DateTime.Now;
+                //var startTime = endTime - totalTime;
+
+                list[i] = new Timpi
+                {
+                    Timp1 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[0][i])),
+                    Timp2 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[1][i])),
+                    Timp3 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[2][i])),
+                    Timp4 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[3][i])),
+                    Timp5 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[4][i])),
+                    Timp6 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[5][i])),
+                    Timp7 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[6][i])),
+                    Timp8 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[7][i])),
+                    Timp9 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[8][i])),
+                    Timp10 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[9][i])),
+                    Timp11 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[10][i])),
+                    Timp12 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[11][i])),
+                    Timp13 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[12][i])),
+                    Timp14 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[13][i])),
+                    Timp15 = TimeOnly.FromTimeSpan(TimeSpan.FromMilliseconds(json[14][i])),
+                    Timptotal = TimeOnly.FromTimeSpan(totalTime),
+                    Endtime = endTime,
+                    //Starttime = startTime,
+                    Normaid = json[15][0]
+                };
+            }
+
+            _context.Timpis.AddRange(list);
+            //_context.Timpis.Add(t);
+            _context.SaveChanges();
+            return Ok(json);
+            
         }
 
-        public IActionResult Stop()
+        public IActionResult Send()
         {
-            _stopWatch.Stop();
-            TimeSpan ts = _stopWatch.Elapsed;
 
-            // Format and display the TimeSpan value.
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-            Console.WriteLine("RunTime " + elapsedTime);
-            return RedirectToAction("Create", "Home");
+            return RedirectToAction("Index");
         }
+
+        public IActionResult Stopwatch(int? op, int? id)
+        {
+            if (op == null)
+                op = 1;
+            ViewBag.nid = id;
+            ViewBag.op = op;
+            return View();
+        }
+        
+
 
         public IActionResult TimpiPartial()
         {
+            ViewBag.stopwatch = _stopwatch;
             return PartialView("_Timpi");
         }
 

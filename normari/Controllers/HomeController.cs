@@ -56,12 +56,16 @@ namespace normari.Controllers
         {
             obj.CreatedAt = DateTime.Now;
             obj.Operatiemultipla = !obj.Operatiesimpla;
+            int? nrOperatii = obj.NrOperatii;
+            if(nrOperatii == null)
+                nrOperatii = 1;
             try
             {
 
                 m_db.Normes.Add(obj);
                 m_db.SaveChanges();
-                return RedirectToAction("Norme");
+                var nid = m_db.Normes.OrderBy(x => x.Normaid).LastOrDefault();
+                return RedirectToAction("Stopwatch", "Timpis", new { op = nrOperatii, id = nid.Normaid });
             }
             catch
             {

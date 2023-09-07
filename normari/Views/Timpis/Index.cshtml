@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<normari.Models.Timpi>
 
+
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Timpid)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Timp1)
             </th>
@@ -69,6 +73,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timpid)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Timp1)
             </td>
