@@ -3,12 +3,12 @@
     @* <div class="row">
         <input id="total-count" value="4" min="1" max="10" />
     </div> *@
-    <div class="row p-4">
+    @* <div class="row pb-4">
         <div class="col-12 d-flex justify-content-center">
             <h1>Stopwatch</h1>
 
         </div>
-    </div>
+    </div> *@
     <div class="row px-4">
         <div class="col-12 d-flex justify-content-center">
 
@@ -16,20 +16,23 @@
         </div>
     </div>
     <div class="row p-4">
-        <div class="col-6 d-flex justify-content-end">
+        <div class="col-5 d-flex justify-content-end">
             <button class="btn btn-success btn-lg" id="start">Start</button>
         </div>
-        <div class="col-6 d-flex justify-content-start">
+        <div class="col-2 d-flex justify-content-center">
             <button class="btn btn-danger btn-lg" id="stop">Stop</button>
         </div>
+        <div class="col-5 d-flex justify-content-start">
+            <input class="btn btn-primary btn-lg" type="button" onclick="MyFunction()" value="Send" />
+        </div>
     </div>
-    <div class="row px-4">
-            @* <div class="col-5 d-flex justify-content-start">
-            </div> *@
+    @* <div class="row px-4">
+             <div class="col-5 d-flex justify-content-start">
+            </div> 
             <div class="col-12 d-flex justify-content-center">
             <input class="btn btn-primary btn-lg" type="button" onclick="MyFunction()" value="Send" />
             </div>
-    </div>
+    </div> *@
     
     <div class="row px-4">
         <p class="h3" id="timp1"></p>
@@ -97,9 +100,8 @@
         let nid = @ViewBag.nid;
         timpi[15] = [];
         timpi[15][0] = nid;
-    console.log(nrOperatii)
-    console.log(nid)
-        // Function to start or stop the stopwatch
+
+    // Function to start or stop the stopwatch
         function startStop() {
             if (isRunning) {
                 // clearInterval(interval);
@@ -212,7 +214,7 @@
             dataType: 'json',
             // contentLength: 29,
             success: function () {
-                alert("Thanks!");
+                window.location.href = '@Url.Action("Create", "Home")';
             },// This Code lets you to change url howyouwant
                 error: function () {
                 alert("Error!");
