@@ -36,8 +36,8 @@ namespace normari.Controllers
 
         public IActionResult Send([FromBody] List<List<int>> json)
         {
-            //if (!ModelState.IsValid)
-            //    return NotFound();
+            if (!ModelState.IsValid)
+                return NotFound();
             Timpi[] list = new Timpi[json[0].Count];
             
             for (var i = 0; i < json[0].Count; i++)

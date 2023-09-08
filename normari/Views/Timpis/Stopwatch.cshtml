@@ -152,8 +152,11 @@
             previous = 0;
             id = 0;
             col = 0;
-            for(let i = 0; i < 15; i++)
-            document.getElementById("timp" + (i+1)).textContent = '';
+            for(let i = 0; i < 15; i++){
+
+                timpi[i] = []
+                document.getElementById("timp" + (i+1)).textContent = '';
+            }
 
     }
 
